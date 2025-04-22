@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte sensible de Fukuoka</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fffaf8;
+    }
+    header {
+      background: #f8e9e9;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #444;
+    }
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+    .popup-img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      margin-top: 5px;
+      border-radius: 10px;
+    }
+    .popup-text {
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    cartographie ----- Fukuoka
+  </header>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([33.5902, 130.4017], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Premier point (atelier)
+    L.marker([33.672065, 130.443870]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>ワークショップ</strong><br>
+          <p class="popup-text">
+            Depuis la fenêtre je vois les montagnes, elles sont d’autant plus belles lors de jours nuageux, la brume semble s’endormir dans le creux des vallées. 
+            Defne travaille beaucoup depuis que nous sommes arrivés, j'aime bien la voir comme ça.
+          </p>
+          <img src="IMG_6205.jpg" class="popup-img" alt="vue fenêtre atelier">
+        </div>
+      `);
+
+    // Nouveau point (cliché cerisiers)
+    L.marker([33.669911, 130.446145]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>Le gros cliché</strong><br>
+          <p class="popup-text">
+            comment je suis censé y croire ?
+          </p>
+          <img src="IMG_6182.jpg" class="popup-img" alt="cerisiers Fukuoka">
+        </div>
+      `);
+
+   // Atelier bois
+    L.marker([33.672465, 130.444250]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>木工アトリエ</strong><br>
+          <p class="popup-text">
+            c’est immense, on apprend à sculpter dans du camphrier, l’un des arbres les plus vénérés du Japon, je flippe à chaque coup de marteau
+          </p>
+          <img src="IMG_6435.jpg" class="popup-img" alt="atelier bois">
+        </div>
+      `);
+  </script>
+
+</body>
+</html>
